@@ -1,4 +1,6 @@
 <?php
+    include '../config/conn.inc';
+    include '../pages/common-function.php';
     $timezone = new DateTimeZone('America/Sao_Paulo');
     $date = new DateTime('now', $timezone); 
     $dateConverted = $date->format('Y-m-d H:i:s');
@@ -12,26 +14,19 @@
     } else {
         echo "Possível ataque de upload de arquivo!\n";
     }
-    include '../config/conn.inc';
     session_start();
-    $modelo = $_REQUEST["modelo"];
-    $marca = $_REQUEST["marca"];
-    $placa = $_REQUEST["placa"];
-    $ano = $_REQUEST["ano"];
-    //$imgCar = $_REQUEST["imgCar"];
-    $file = $_FILES['imgCar']['name'];
+    $model = $_REQUEST["model"];
+    $brand = $_REQUEST["brand"];
+    $board = $_REQUEST["board"];
+    $year = $_REQUEST["year"];
+    
+    $sql = "INSERT INTO Cars VALUES('', '$model', '$brand', '$board', '$year', '$uploadfile','true')";
 
-    echo "$modelo - $marca - $placa - $ano <br> $file"
-/*
-    $res = $mysqli->query("SELECT * FROM tab_Users WHERE Login='$user' AND Pass='$pass'");
-
-    if($res->num_rows > 0){
-        $_SESSION['logged'] = 'true';
-        header('Location: ./src/pages/home.php');   
+    if ($mysqli->query($sql) === TRUE) {
+        insertMessage('true', '<strong>Sucesso!</strong> Veículo inserido com sucesso!', 'alert-success');
     } else {
-        $_SESSION['MSGVerify'] = 'true';
-        $_SESSION['MSG'] = '<b>Erro!</b> Usuário não encontrado';
-        $_SESSION['MSGType'] = 'alert-danger';
-        header('Location: index.php');
-    }*/
+        insertMessage('false', '<strong>Erro!</strong> Erro ao inserir o veículo!', 'alert-danger');
+    }
+    $mysqli->close();
+    header('Location: ./register.php');
 ?>

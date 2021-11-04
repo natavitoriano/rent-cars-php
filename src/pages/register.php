@@ -10,6 +10,10 @@
 </head>
 <body>
     <div>
+        <?php
+            include '../pages/common-function.php';
+            verifyMSGS();
+        ?>
         <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
@@ -33,19 +37,19 @@
                 <form class="row g-3" enctype="multipart/form-data" method="POST" action="register_act.php">
                     <div class="col-md-6">
                         <label for="pass" class="form-label">Modelo</label>
-                        <input type="text" class="form-control" id="modelo" name="modelo">
+                        <input type="text" class="form-control" id="model" name="model">
                     </div>
                     <div class="col-md-6">
                         <label for="user" class="form-label">Marca</label>
-                        <input type="text" class="form-control" name="marca" id="marca" aria-describedby="marca">
+                        <input type="text" class="form-control" name="brand" id="brand" aria-describedby="brand">
                     </div>
                     <div class="col-md-6">
                         <label for="user" class="form-label">Placa</label>
-                        <input type="text" class="form-control" name="placa" id="placa" aria-describedby="placa">
+                        <input type="text" class="form-control" name="board" id="board" aria-describedby="board">
                     </div>
                     <div class="col-md-6">
                         <label for="user" class="form-label">Ano</label>
-                        <select id="inputYear" class="form-select" name="ano" id="ano">
+                        <select id="inputYear" class="form-select" name="year" id="year">
                             <?php
                                 $year = date('Y');
                                 for($i = 0;$i < 40; $i++){

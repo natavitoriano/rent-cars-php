@@ -1,5 +1,6 @@
 <?php
     include './src/config/conn.inc';
+    include './src/pages/common-function.php';
     session_start();
     $user = $_REQUEST["user"];
     $pass = $_REQUEST["pass"];
@@ -10,9 +11,7 @@
         $_SESSION['logged'] = 'true';
         header('Location: ./src/pages/home.php');   
     } else {
-        $_SESSION['MSGVerify'] = 'true';
-        $_SESSION['MSG'] = '<b>Erro!</b> Usuário não encontrado';
-        $_SESSION['MSGType'] = 'alert-danger';
+        insertMessage('true', '<strong>Erro!</strong> Usuário não encontrado', 'alert-danger');
         header('Location: index.php');
     }
 ?>
