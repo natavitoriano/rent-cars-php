@@ -27,6 +27,19 @@
             </div>
         </nav>
         </header>
+        <main class="">
+            
+        </main>
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                    <p class="col-md-4 mb-0 text-muted">© 2021 Natã Vitoriano</p>
+                    <ul class="nav col-md-4 justify-content-end">
+                        <li class="nav-item"><a href="./home.php" class="nav-link px-2 text-muted active" aria-current="page">Home</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Cadastrar</a></li>
+                        <li class="nav-item"><a href="./list.php" class="nav-link px-2 text-muted">Lista de Veículos</a></li>
+                    </ul>    
+            </footer>
+        </div> 
     </div>
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
