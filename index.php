@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./src/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./src/css/styles.css" >
-    <title>Document</title>
+    <title>Login</title>
 </head>
 <body>
   <?php
@@ -30,8 +30,6 @@
     }
   ?>
     <div>
-        <header>
-        </header>
         <main class="d-flex justify-content-center align-items-center" style="width: 100%; height: 100vh;">
           <div class="card p-5 card-login">
             <div class="w-100">
