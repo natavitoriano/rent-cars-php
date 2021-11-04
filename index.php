@@ -9,20 +9,37 @@
     <title>Document</title>
 </head>
 <body>
+  <?php
+    session_start();
+    if(!empty($_SESSION["MSGVerify"])) {
+      $MSGVerify = $_SESSION["MSGVerify"];
+      if($MSGVerify == "true"){
+        $MSG = $_SESSION["MSG"];
+        $MSGType = $_SESSION["MSGType"]
+        ?>
+        <div class="alert <?php echo $MSGType?>" role="alert">
+          <?php echo $MSG?>
+        </div>
+        <?php
+      }
+      session_destroy();
+    }else{
+    }  
+  ?>
     <div>
         <header>
         </header>
         <main class="d-flex justify-content-center align-items-center" style="width: 100%; height: 100vh;">
           <div class="card p-5 card-login">
             <div class="w-100">
-              <form>
+              <form method="POST" action="index_act.php">
                 <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <label for="user" class="form-label">User</label>
+                  <input type="text" class="form-control" name="user" id="user" aria-describedby="user">
                 </div>
                 <div class="mb-5">
-                  <label for="exampleInputPassword1" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1">
+                  <label for="pass" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="pass" name="pass">
                 </div>
                 <div class="d-grid">
                   <button type="submit" class="btn btn-primary">Submit</button>
@@ -32,6 +49,6 @@
           </div>
         </main>
     </div>
-    <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./src/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
