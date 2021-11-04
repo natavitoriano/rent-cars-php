@@ -29,27 +29,27 @@
         </header>
         <main class="container d-flex flex-column align-items-center">
             <p class="fs-2 mt-3">Cadastro de veículos</p>
-            <div class="card mt-2 p-5 w-75 shadow-lg ">
-                <form class="row g-3" method="POST" action="index_act.php">
+            <div class="card mt-2 p-5 w-75 shadow-lg">
+                <form class="row g-3" enctype="multipart/form-data" method="POST" action="register_act.php">
                     <div class="col-md-6">
                         <label for="pass" class="form-label">Modelo</label>
-                        <input type="text" class="form-control" id="pass" name="pass">
+                        <input type="text" class="form-control" id="modelo" name="modelo">
                     </div>
                     <div class="col-md-6">
                         <label for="user" class="form-label">Marca</label>
-                        <input type="text" class="form-control" name="user" id="user" aria-describedby="user">
+                        <input type="text" class="form-control" name="marca" id="marca" aria-describedby="marca">
                     </div>
                     <div class="col-md-6">
                         <label for="user" class="form-label">Placa</label>
-                        <input type="text" class="form-control" name="user" id="user" aria-describedby="user">
+                        <input type="text" class="form-control" name="placa" id="placa" aria-describedby="placa">
                     </div>
                     <div class="col-md-6">
                         <label for="user" class="form-label">Ano</label>
-                        <select id="inputYear" class="form-select">
+                        <select id="inputYear" class="form-select" name="ano" id="ano">
                             <?php
                                 $year = date('Y');
                                 for($i = 0;$i < 40; $i++){
-                                    echo "<option>$year</option>";
+                                    echo "<option name='$year' id='$year'>$year</option>";
                                     $year = $year - 1;
                                 }
                             ?>
@@ -57,7 +57,7 @@
                     </div>
                     <div class="col-12 mb-3">
                         <label for="formFile" class="form-label">Selecione uma imagem</label>
-                        <input class="form-control" type="file" id="formFile" accept=".png,.jpg,.jpeg">
+                        <input class="form-control" type="file" id="imgCar" name="imgCar" accept=".png,.jpg,.jpeg">
                     </div>
                     <div class="col-12 d-flex justify-content-center">
                         <button type="submit" class="btn btn-dark col-12 col-md-8">Cadastrar</button>
