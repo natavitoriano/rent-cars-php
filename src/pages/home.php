@@ -20,8 +20,8 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav d-flex justify-content-around w-50">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    <a class="nav-link" href="#">Cadastrar</a>
-                    <a class="nav-link" href="#">Lista de Veículos</a>
+                    <a class="nav-link" href="./register.php">Cadastrar</a>
+                    <a class="nav-link" href="./list.php">Lista de Veículos</a>
                 </div>
                 </div>
             </div>
