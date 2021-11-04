@@ -11,20 +11,23 @@
 <body>
   <?php
     session_start();
-    if(!empty($_SESSION["MSGVerify"])) {
-      $MSGVerify = $_SESSION["MSGVerify"];
-      if($MSGVerify == "true"){
-        $MSG = $_SESSION["MSG"];
-        $MSGType = $_SESSION["MSGType"]
-        ?>
-        <div class="alert <?php echo $MSGType?>" role="alert">
-          <?php echo $MSG?>
-        </div>
-        <?php
-      }
-      session_destroy();
-    }else{
-    }  
+    if(empty($_SESSION["logged"]) || $_SESSION["logged"] == "false"){
+      if(!empty($_SESSION["MSGVerify"])) {
+        $MSGVerify = $_SESSION["MSGVerify"];
+        if($MSGVerify == "true"){
+          $MSG = $_SESSION["MSG"];
+          $MSGType = $_SESSION["MSGType"]
+          ?>
+          <div class="alert <?php echo $MSGType?>" role="alert">
+            <?php echo $MSG?>
+          </div>
+          <?php
+        }
+        session_destroy();
+      } else{ }  
+    } else {
+      header('Location: ./src/pages/home.php');
+    }
   ?>
     <div>
         <header>
