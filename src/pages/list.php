@@ -55,7 +55,7 @@
                 <tbody>
                     <?php
                         include '../config/conn.inc';
-                        $res = $mysqli->query("SELECT * FROM Cars");
+                        $res = $mysqli->query("SELECT * FROM tab_Cars");
                         if($res){
                             if ($res->num_rows > 0) {
                                 while($row = $res->fetch_assoc()) {

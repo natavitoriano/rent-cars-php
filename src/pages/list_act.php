@@ -9,7 +9,7 @@
     $year = $_REQUEST["up-year"];
     $available = $_REQUEST["up-available"];
      
-    $sql = "UPDATE Cars SET Model='".$model."', Brand='".$brand."', Board='".$board."', Year='".$year."', Available='".$available."' WHERE ID_Car ='".$id."'";
+    $sql = "UPDATE tab_Cars SET Model='".$model."', Brand='".$brand."', Board='".$board."', Year='".$year."', Available='".$available."' WHERE ID_Car ='".$id."'";
 
     if ($mysqli->query($sql) === TRUE) {
         insertMessage('true', '<strong>Sucesso!</strong> Veículo atualizado com sucesso!', 'alert-success');
