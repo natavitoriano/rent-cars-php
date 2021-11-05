@@ -7,6 +7,7 @@
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css" >
     <title>Cadastro</title>
+    
 </head>
 <body>
     <div>
@@ -28,6 +29,11 @@
                     <a class="nav-link" href="./list.php">Lista de Veículos</a>
                 </div>
                 </div>
+            </div>
+            <div class="me-3">
+                <form action="./logout_act.php">
+                    <button id="btn-exit"class="btn-exit btn btn-outline-danger" type="submit">Sair</button>
+                </form>    
             </div>
         </nav>
         </header>

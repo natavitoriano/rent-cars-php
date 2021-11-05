@@ -78,54 +78,54 @@
             <div class="modal fade" id="modal-edit" tabindex="-1" aria-labelledby="modal-edit" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modal-edit">Editar</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                        <div class="modal-body d-flex justify-content-center">
-                            <div class="card mt-2 p-5 shadow-lg">
-                                <form class="row g-3" enctype="multipart/form-data" method="POST" action="list_act.php">
-                                    <div class="col-md-6">
-                                        <label for="pass" class="form-label">Modelo</label>
-                                        <input type="text" class="form-control" id="model" name="up-model">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="user" class="form-label">Marca</label>
-                                        <input type="text" class="form-control" name="up-brand" id="brand" aria-describedby="brand">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="user" class="form-label">Placa</label>
-                                        <input type="text" class="form-control" name="up-board" id="board" aria-describedby="board">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="user" class="form-label">Ano</label>
-                                        <select id="inputYear" class="form-select" name="up-year">
-                                            <?php
-                                                $year = date('Y');
-                                                for($i = 0;$i < 40; $i++){
-                                                    echo "<option name='$year' id='$year'>$year</option>";
-                                                    $year = $year - 1;
-                                                }
-                                            ?>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-12 mb-5">
-                                        <label for="user" class="form-label">Disponível</label>
-                                        <select name="up-available" id="available" class="form-select">
-                                            <option id="Sim" name="Sim">Sim</option>
-                                            <option id="Não" name="Não">Não</option>
-                                        </select>
-                                        <input type="text" id="id-car" class="id-car" name="up-id-car" style="display: none;"/>
-                                    </div>
-                                    <div class="col-12 d-flex justify-content-center">
-                                        <button type="submit" class="btn btn-dark col-12 col-md-8">Atualizar</button>
-                                    </div>
-                                    <div class='col-12 d-flex justify-content-end mt-5'>
-                                        <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#modal-delete'>Deletar</button>
-                                    </div>
-                                </form>
-                            </div>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modal-edit">Editar</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
+                            <div class="modal-body d-flex justify-content-center">
+                                <div class="card mt-2 p-5 shadow-lg w-100 h-100">
+                                    <form class="row g-3" enctype="multipart/form-data" method="POST" action="list_act.php">
+                                        <div class="col-md-6">
+                                            <label for="pass" class="form-label">Modelo</label>
+                                            <input type="text" class="form-control" id="model" name="up-model">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="user" class="form-label">Marca</label>
+                                            <input type="text" class="form-control" name="up-brand" id="brand" aria-describedby="brand">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="user" class="form-label">Placa</label>
+                                            <input type="text" class="form-control" name="up-board" id="board" aria-describedby="board">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="user" class="form-label">Ano</label>
+                                            <select id="inputYear" class="form-select" name="up-year">
+                                                <?php
+                                                    $year = date('Y');
+                                                    for($i = 0;$i < 40; $i++){
+                                                        echo "<option name='$year' id='$year'>$year</option>";
+                                                        $year = $year - 1;
+                                                    }
+                                                ?>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-12 mb-5">
+                                            <label for="user" class="form-label">Disponível</label>
+                                            <select name="up-available" id="available" class="form-select">
+                                                <option id="Sim" name="Sim">Sim</option>
+                                                <option id="Não" name="Não">Não</option>
+                                            </select>
+                                            <input type="text" id="id-car" class="id-car" name="up-id-car" style="display: none;"/>
+                                        </div>
+                                        <div class="col-12 d-flex justify-content-center">
+                                            <button type="submit" class="btn btn-dark col-12 col-md-8">Atualizar</button>
+                                        </div>
+                                        <div class='col-12 d-flex justify-content-end mt-5'>
+                                            <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#modal-delete'>Deletar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -142,7 +142,10 @@
                     <div class="modal-footer">
                         <div class="d-flex justify-content-between w-100">
                             <button type="button" class="btn btn-secondary ms-3" data-bs-dismiss="modal">Fechar</button>
-                            <button type="button" class="btn btn-danger">DELETAR</button>
+                            <form enctype="multipart/form-data" method="POST" action="list_delete_act.php">
+                                <input type="text" id="id-car-delete" class="id-car-delete" name="id-car-delete" style="display: none;"/>
+                                <button type="submit" class="btn btn-danger">DELETAR</button>
+                            </form>     
                         </div>    
                     </div>
                     </div>
@@ -166,6 +169,7 @@
             $('.btn-edit').click(function() {
                 $tr = $(this).closest('tr');
                 $('.id-car').val($('.ID_Car',$tr).text());
+                $('.id-car-delete').val($('.ID_Car',$tr).text());
                 $('#model').val($('.Model', $tr).text());
                 $('#brand').val($('.Brand', $tr).text());
                 $('#board').val($('.Board', $tr).text());
