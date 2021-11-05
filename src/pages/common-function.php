@@ -24,7 +24,7 @@
         $_SESSION['MSGType'] = '';
     }
 
-    function verifyMSGS(){
+    function verifyMSGS($path){
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
@@ -38,7 +38,7 @@
                 <?php echo $MSG?>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
-              <script src="/veiculos/src/js/jquery-3.6.0.min.js"></script>
+              <script src="<?php echo $path; ?>/js/jquery-3.6.0.min.js"></script>
                 <script>
                     $('document').ready(function() {
                             $("#alert-padrao").ready(function(){  

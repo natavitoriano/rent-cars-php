@@ -13,7 +13,7 @@
     include './src/pages/common-function.php';
     session_start();
     if(empty($_SESSION["logged"]) || $_SESSION["logged"] == "false"){
-      verifyMSGS();
+      verifyMSGS("./src");
       session_destroy();
     } else {
       header('Location: ./src/pages/home.php');

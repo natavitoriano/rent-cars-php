@@ -14,7 +14,7 @@
         <?php
         $campo = '';
             include '../pages/common-function.php';
-            verifyMSGS();
+            verifyMSGS("..");
             verifyLogin();
         ?>
         <header>

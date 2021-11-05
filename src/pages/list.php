@@ -12,7 +12,7 @@
     <div>
         <?php
             include '../pages/common-function.php';
-            verifyMSGS();
+            verifyMSGS("..");
             verifyLogin();
         ?>
         <header>
