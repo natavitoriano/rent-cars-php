@@ -23,22 +23,23 @@
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav d-flex justify-content-around w-50">
+                <div class="navbar-nav d-flex justify-content-around w-100">
                     <a class="nav-link"  href="./home.php">Home</a>
                     <a class="nav-link" href="./register.php">Cadastrar</a>
                     <a class="nav-link active" aria-current="page" href="#">Lista de Veículos</a>
                 </div>
+                <div class="w-100 d-flex justify-content-end">
+                    <form action="./logout_act.php">
+                        <button id="btn-exit"class="btn-exit btn btn-outline-danger" type="submit">Sair</button>
+                    </form>    
+                </div>  
                 </div>
-                <div class="me-3">
-                <form action="./logout_act.php">
-                    <button id="btn-exit"class="btn-exit btn btn-outline-danger" type="submit">Sair</button>
-                </form>    
-            </div>  
             </div>
         </nav>
         </header>
         <main class="container d-flex flex-column align-items-center">
-            <table class="table mt-5 text-center">
+            <p class="fs-2 mt-3">Lista de veículos</p>
+            <table class="table mt-2 text-center">
                 <thead>
                     <tr>
                         <th>ID</th>

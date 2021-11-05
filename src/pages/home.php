@@ -27,12 +27,12 @@
                     <a class="nav-link" href="./register.php">Cadastrar</a>
                     <a class="nav-link" href="./list.php">Lista de Veículos</a>
                 </div>
-                </div>
-                <div class="me-3">
+                <div class="w-100 d-flex justify-content-end">
                     <form action="./logout_act.php">
                         <button id="btn-exit"class="btn-exit btn btn-outline-danger" type="submit">Sair</button>
                     </form>    
-                </div>  
+                </div>
+                </div>
             </div>
         </nav>
         </header>
