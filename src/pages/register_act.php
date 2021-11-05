@@ -20,7 +20,7 @@
     $board = $_REQUEST["board"];
     $year = $_REQUEST["year"];
     
-    $sql = "INSERT INTO Cars VALUES('', '$model', '$brand', '$board', '$year', '$uploadfile','true')";
+    $sql = "INSERT INTO Cars VALUES('', '$model', '$brand', '$board', '$year', '$uploadfile','Sim')";
 
     if ($mysqli->query($sql) === TRUE) {
         insertMessage('true', '<strong>Sucesso!</strong> Veículo inserido com sucesso!', 'alert-success');

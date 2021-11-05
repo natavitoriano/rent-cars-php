@@ -9,8 +9,10 @@
 
     if($res->num_rows > 0){
         $_SESSION['logged'] = 'true';
+        $mysqli->close();
         header('Location: ./src/pages/home.php');   
     } else {
+        $mysqli->close();
         insertMessage('true', '<strong>Erro!</strong> Usuário não encontrado', 'alert-danger');
         header('Location: index.php');
     }

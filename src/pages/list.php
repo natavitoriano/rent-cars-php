@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="../css/styles.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/styles.css" >
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"> 
     <title>Lista de Veículos</title>
 </head>
 <body>
@@ -27,8 +27,122 @@
             </div>
         </nav>
         </header>
-        <main class="">
-            
+        <main class="container d-flex flex-column align-items-center">
+            <table class="table mt-5 text-center">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Imagem</th>
+                        <th>Modelo</th>
+                        <th>Marca</th>
+                        <th>Placa</th>
+                        <th>Ano</th>
+                        <th>Disponível</th>
+                        <th>Editar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        include '../config/conn.inc';
+                        $res = $mysqli->query("SELECT * FROM Cars");
+                        if($res){
+                            if ($res->num_rows > 0) {
+                                while($row = $res->fetch_assoc()) {
+                                  echo "<tr class='align-middle align-items-center'>";
+                                  echo "<td class='ID_Car'>".$row["ID_Car"]. "</td>";
+                                  echo "<td class='IMG_Car'><img src='".$row["IMG_Car"]."' alt='Car' class='img-fluid' style='width: 150px; height: 150px;'/></td>";
+                                  echo "<td class='Model'>".$row["Model"]. "</td>";
+                                  echo "<td class='Brand'>".$row["Brand"]. "</td>";
+                                  echo "<td class='Board'>".$row["Board"]. "</td>";
+                                  echo "<td class='Year'>".$row["Year"]. "</td>";
+                                  if($row["Available"] == 'Sim') echo "<td class='table-success  Available'>".$row["Available"]. "</td>";
+                                  else echo "<td class='table-danger Available'>".$row["Available"]. "</td>";
+                                  echo "<td><button type='submit' class='btn btn-dark btn-edit' value='".$row["ID_Car"]."' name='btn-edit' data-bs-toggle='modal' data-bs-target='#modal-edit'>
+                                    Editar
+                                  </button>
+                                  </td>";
+                                  echo "</tr>";
+                                }
+                              } else {
+                                echo "0 results";
+                              }
+                        }              
+                        $mysqli->close();
+                    ?>
+                </tbody>
+            </table>
+            <div class="modal fade" id="modal-edit" tabindex="-1" aria-labelledby="modal-edit" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal-edit">Editar</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                        <div class="modal-body d-flex justify-content-center">
+                            <div class="card mt-2 p-5 shadow-lg">
+                                <form class="row g-3" enctype="multipart/form-data" method="POST" action="list_act.php">
+                                    <div class="col-md-6">
+                                        <label for="pass" class="form-label">Modelo</label>
+                                        <input type="text" class="form-control" id="model" name="model">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="user" class="form-label">Marca</label>
+                                        <input type="text" class="form-control" name="brand" id="brand" aria-describedby="brand">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="user" class="form-label">Placa</label>
+                                        <input type="text" class="form-control" name="board" id="board" aria-describedby="board">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="user" class="form-label">Ano</label>
+                                        <select id="inputYear" class="form-select" name="year">
+                                            <?php
+                                                $year = date('Y');
+                                                for($i = 0;$i < 40; $i++){
+                                                    echo "<option name='$year' id='$year'>$year</option>";
+                                                    $year = $year - 1;
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-12 mb-5">
+                                        <label for="user" class="form-label">Disponível</label>
+                                        <select name="available" id="available" class="form-select">
+                                            <option id="Sim" name="Sim">Sim</option>
+                                            <option id="Não" name="Não">Não</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-center">
+                                        <button type="submit" class="btn btn-dark col-12 col-md-8">Atualizar</button>
+                                    </div>
+                                    <div class='col-12 d-flex justify-content-end mt-5'>
+                                        <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#modal-delete'>Deletar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="modal-delete" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal-delete">Excluir</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="fs-5">Tem certeza que deseja excluir?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="d-flex justify-content-between w-100">
+                            <button type="button" class="btn btn-secondary ms-3" data-bs-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-danger">DELETAR</button>
+                        </div>    
+                    </div>
+                    </div>
+                </div>
+                </div>
         </main>
         <div class="container">
             <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
@@ -41,6 +155,20 @@
             </footer>
         </div> 
     </div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>
+        $('document').ready(function() {
+            $('.btn-edit').click(function() {
+                $tr = $(this).closest('tr');
+                $('#model').val($('.Model', $tr).text());
+                $('#brand').val($('.Brand', $tr).text());
+                $('#board').val($('.Board', $tr).text());
+                $('#inputYear').val($('.Year', $tr).text()).change();
+                $('#available').val($('.Available', $tr).text()).change();
+                console.log($('.IMG_Car img').attr('src'));
+            });
+        });
+    </script>
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
