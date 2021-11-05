@@ -13,6 +13,7 @@
         <?php
             include '../pages/common-function.php';
             verifyMSGS();
+            verifyLogin();
         ?>
         <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">

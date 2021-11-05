@@ -1,4 +1,11 @@
 <?php
+    function verifyLogin(){
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        if($_SESSION['logged'] == 'true'){}
+        else header('Location: ../../index.php');
+    }
     function insertMessage($MSGVerify, $MSG, $MSGType){
         if (session_status() === PHP_SESSION_NONE) {
             session_start();

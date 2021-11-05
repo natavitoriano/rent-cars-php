@@ -10,6 +10,10 @@
 </head>
 <body>
     <div class="h-100">
+        <?php
+            include '../pages/common-function.php';
+            verifyLogin();
+        ?>
         <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
