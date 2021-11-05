@@ -12,6 +12,7 @@
 <body>
     <div>
         <?php
+        $campo = '';
             include '../pages/common-function.php';
             verifyMSGS();
         ?>
@@ -40,21 +41,21 @@
         <main class="container d-flex flex-column align-items-center">
             <p class="fs-2 mt-3">Cadastro de veículos</p>
             <div class="card mt-2 p-5 w-75 shadow-lg">
-                <form class="row g-3" enctype="multipart/form-data" method="POST" action="register_act.php">
+                <form id="form-register" class="row g-3" enctype="multipart/form-data" method="POST" action="register_act.php">
                     <div class="col-md-6">
-                        <label for="pass" class="form-label">Modelo</label>
+                        <label id="label-model" for="pass" class="form-label">Modelo</label>
                         <input type="text" class="form-control" id="model" name="model">
                     </div>
                     <div class="col-md-6">
-                        <label for="user" class="form-label">Marca</label>
+                        <label id="label-brand" for="user" class="form-label">Marca</label>
                         <input type="text" class="form-control" name="brand" id="brand" aria-describedby="brand">
                     </div>
                     <div class="col-md-6">
-                        <label for="user" class="form-label">Placa</label>
+                        <label id="label-board" for="user" class="form-label">Placa</label>
                         <input type="text" class="form-control" name="board" id="board" aria-describedby="board">
                     </div>
                     <div class="col-md-6">
-                        <label for="user" class="form-label">Ano</label>
+                        <label id="label-year" for="user" class="form-label">Ano</label>
                         <select id="inputYear" class="form-select" name="year" id="year">
                             <?php
                                 $year = date('Y');
@@ -70,9 +71,14 @@
                         <input class="form-control" type="file" id="imgCar" name="imgCar" accept=".png,.jpg,.jpeg">
                     </div>
                     <div class="col-12 d-flex justify-content-center">
-                        <button type="submit" class="btn btn-dark col-12 col-md-8">Cadastrar</button>
+                        <button id="btn-register" type="submit" class="btn btn-dark col-12 col-md-8">Cadastrar</button>
                     </div>
                 </form>
+            </div>
+            <div id='alert-message' class="alert-transition alert alert-danger alert-dismissible fade show fixed-top p-1" role="alert" style="display: none;">
+                <div class="d-flex">
+                    <strong class="me-2">Erro!</strong><p id='alert-text'></p>
+                </div>
             </div>
         </main>
         <div class="container">
@@ -86,6 +92,38 @@
             </footer>
         </div> 
     </div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>
+        $('document').ready(function() {
+            $('#btn-register').click(function(e) {
+                e.preventDefault();
+                if(!validateFields($('#model'), $('#label-model'))){
+                    if(!validateFields($('#brand'), $('#label-brand'))){
+                        if(!validateFields($('#board'), $('#label-board'))){
+                            $('#form-register').submit();
+                        }
+                    }
+                }
+            });
+        });
+
+        function validateFields(field, label){
+            if($.trim(field.val()) == ''){
+                <?php $campo = "<script>label</script>"; ?>
+                $('#alert-text').text(`Preencha o campo ${label.text()}!`)
+                $('#alert-message').show();
+                setTimeout(function() {
+                    $('#alert-message').fadeOut();
+                }, 3000);
+                field.addClass("emptyFocus");
+                field.focus();
+                return true;
+            } else {
+                field.removeClass("emptyFocus");
+                return false;
+            }
+        }
+    </script>
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
