@@ -10,6 +10,10 @@
 </head>
 <body>
     <div>
+        <?php
+            include '../pages/common-function.php';
+            verifyMSGS();
+        ?>
         <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
@@ -83,19 +87,19 @@
                                 <form class="row g-3" enctype="multipart/form-data" method="POST" action="list_act.php">
                                     <div class="col-md-6">
                                         <label for="pass" class="form-label">Modelo</label>
-                                        <input type="text" class="form-control" id="model" name="model">
+                                        <input type="text" class="form-control" id="model" name="up-model">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="user" class="form-label">Marca</label>
-                                        <input type="text" class="form-control" name="brand" id="brand" aria-describedby="brand">
+                                        <input type="text" class="form-control" name="up-brand" id="brand" aria-describedby="brand">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="user" class="form-label">Placa</label>
-                                        <input type="text" class="form-control" name="board" id="board" aria-describedby="board">
+                                        <input type="text" class="form-control" name="up-board" id="board" aria-describedby="board">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="user" class="form-label">Ano</label>
-                                        <select id="inputYear" class="form-select" name="year">
+                                        <select id="inputYear" class="form-select" name="up-year">
                                             <?php
                                                 $year = date('Y');
                                                 for($i = 0;$i < 40; $i++){
@@ -107,10 +111,11 @@
                                     </div>
                                     <div class="col-md-12 mb-5">
                                         <label for="user" class="form-label">Disponível</label>
-                                        <select name="available" id="available" class="form-select">
+                                        <select name="up-available" id="available" class="form-select">
                                             <option id="Sim" name="Sim">Sim</option>
                                             <option id="Não" name="Não">Não</option>
                                         </select>
+                                        <input type="text" id="id-car" class="id-car" name="up-id-car" style="display: none;"/>
                                     </div>
                                     <div class="col-12 d-flex justify-content-center">
                                         <button type="submit" class="btn btn-dark col-12 col-md-8">Atualizar</button>
@@ -160,12 +165,12 @@
         $('document').ready(function() {
             $('.btn-edit').click(function() {
                 $tr = $(this).closest('tr');
+                $('.id-car').val($('.ID_Car',$tr).text());
                 $('#model').val($('.Model', $tr).text());
                 $('#brand').val($('.Brand', $tr).text());
                 $('#board').val($('.Board', $tr).text());
                 $('#inputYear').val($('.Year', $tr).text()).change();
                 $('#available').val($('.Available', $tr).text()).change();
-                console.log($('.IMG_Car img').attr('src'));
             });
         });
     </script>
