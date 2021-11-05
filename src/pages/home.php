@@ -24,6 +24,11 @@
                     <a class="nav-link" href="./list.php">Lista de Veículos</a>
                 </div>
                 </div>
+                <div class="me-3">
+                    <form action="./logout_act.php">
+                        <button id="btn-exit"class="btn-exit btn btn-outline-danger" type="submit">Sair</button>
+                    </form>    
+                </div>  
             </div>
         </nav>
         </header>

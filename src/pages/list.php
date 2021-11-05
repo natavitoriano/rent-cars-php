@@ -28,6 +28,11 @@
                     <a class="nav-link active" aria-current="page" href="#">Lista de Veículos</a>
                 </div>
                 </div>
+                <div class="me-3">
+                <form action="./logout_act.php">
+                    <button id="btn-exit"class="btn-exit btn btn-outline-danger" type="submit">Sair</button>
+                </form>    
+            </div>  
             </div>
         </nav>
         </header>
@@ -68,7 +73,7 @@
                                   echo "</tr>";
                                 }
                               } else {
-                                echo "0 results";
+                                echo "<tr><td colspan='8'>Não há registros</td></tr>";
                               }
                         }              
                         $mysqli->close();

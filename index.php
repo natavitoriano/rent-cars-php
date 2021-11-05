@@ -19,21 +19,21 @@
       header('Location: ./src/pages/home.php');
     }
   ?>
-    <div>
+    <div class="bg-dark">
         <main class="d-flex justify-content-center align-items-center" style="width: 100%; height: 100vh;">
           <div class="card p-5 card-login">
             <div class="w-100">
               <form method="POST" action="index_act.php">
                 <div class="mb-3">
-                  <label for="user" class="form-label">User</label>
-                  <input type="text" class="form-control" name="user" id="user" aria-describedby="user">
+                  <label for="user" class="form-label">Usuário</label>
+                  <input type="text" class="form-control shadow" name="user" id="user" aria-describedby="user">
                 </div>
                 <div class="mb-5">
-                  <label for="pass" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="pass" name="pass">
+                  <label for="pass" class="form-label">Senha</label>
+                  <input type="password" class="form-control shadow" id="pass" name="pass">
                 </div>
                 <div class="d-grid">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-dark">Entrar</button>
                 </div>
               </form>
             </div>

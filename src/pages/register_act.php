@@ -10,9 +10,8 @@
     $uploaddir = '../public/imgs/cars/';
     $uploadfile = $uploaddir . $dateConverted .basename($_FILES['imgCar']['name']);
     if (move_uploaded_file($_FILES['imgCar']['tmp_name'], $uploadfile)) {
-        echo "Arquivo válido e enviado com sucesso.\n";
     } else {
-        echo "Possível ataque de upload de arquivo!\n";
+        $uploadfile = '../public/imgs/no_image.jpg';
     }
     session_start();
     $model = $_REQUEST["model"];
